@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "329666890117",
+    "firebase_url": "https://water-station-93.firebaseio.com",
+    "project_id": "water-station-93",
+    "storage_bucket": "water-station-93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329666890117:android:4813620f93ddbc8ff29cec",
+        "android_client_info": {
+          "package_name": "com.example.cor_waterstation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329666890117-d0po3nof4r9acqubdgr9o4305frane4i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cor_waterstation",
+            "certificate_hash": "3ac6af8fd28637352bfb29ecedd345f1a7393bdf"
+          }
+        },
+        {
+          "client_id": "329666890117-qhmmf5po44me6gm3992b58afbjd3lj4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAr5euzoUSCAbLdqVzyoF12WdK3H7d8Fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329666890117-qhmmf5po44me6gm3992b58afbjd3lj4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
