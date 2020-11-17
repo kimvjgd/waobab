@@ -1,23 +1,16 @@
-import 'package:cor_waterstation/screens/main_page2.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cor_waterstation/providers/person.dart';
+import 'package:cor_waterstation/providers/persons.dart';
+import 'package:cor_waterstation/screens/slide_screen.dart';
 import 'package:cor_waterstation/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cor_waterstation/transitory/constants.dart';
-import 'package:cor_waterstation/transitory/main_page.dart';
 import 'package:cor_waterstation/transitory/rounded_button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
-
-
-String person_name= '';
-String person_phone= '';
-List person_Info= [];
-
+String test = 'test';
+  final profileList = FirebaseFirestore.instance.collection('person');
 
 class Identification extends StatefulWidget {
-
 
   static const String id = 'registration_screen';
 
@@ -26,12 +19,66 @@ class Identification extends StatefulWidget {
 }
 
 class _IdentificationState extends State<Identification> {
+  String per_name;
+  String per_email= email;
+  String per_phone;
+  String per_description = '';
+  int per_invest_amount=0;
+  int per_recover_amount=0;
+  int per_water_percent=0;
+  int per_fruit=0;
+
+
+  final _phoneFocusNode = FocusNode();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  // var _editedPerson = Person(
+  //   name: '',
+  //   phone: '',
+  //   email: email,
+  //   description: '',
+  //   invest_amount: 0,
+  //   recover_amount: 0,
+  //   water_percent: 0,
+  //   fruit: 0,
+  // );
+
+  @override
+  void initState() {
+    if(per_name != '') {
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> SlidePage()));
+    }
+    super.initState();
+  }
 
 
-  final _firestore = Firestore.instance;
+  @override
+  void dispose() {
+    _phoneFocusNode.dispose();
+    super.dispose();
+  }
+
+  Future<void> _saveForm() async {
+    if(per_email != null && per_phone != null) {
+      try{
+        profileList.add({
+          'email': per_email,
+          'name': per_name,
+          'phone': per_phone,
+          'description': per_description,
+          'invest_amount': per_invest_amount,
+          'recover_amount': per_recover_amount,
+          'water_percent': per_water_percent,
+          'fruit': per_fruit,           // 나중에 그냥 0으로 고칠 수 있는
+        });
+      } catch (e) {
+        print(e);
+      }
+    }
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> SlidePage()));
+  }
+
+
 
 
   @override
@@ -64,26 +111,55 @@ class _IdentificationState extends State<Identification> {
                   SizedBox(
                     height: 48.0,
                   ),
-                  TextField(
-                    textAlign: TextAlign.center,
+                  TextFormField(
                     style: TextStyle(color: Colors.black),
-                    onChanged: (value) {
-                      person_name = value;
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(labelText: 'Name'),
+                    textInputAction: TextInputAction.next,
+                    onFieldSubmitted: (_) {
+                      FocusScope.of(context)
+                          .requestFocus(_phoneFocusNode);
                     },
-                    decoration: kTextFieldDecoration.copyWith(
-                        hintText: 'Enter your name'),
+                    validator: (value) {
+                      if(value.isEmpty) {
+                        return 'Please provide a name';
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                        per_name = value;
+                    },
                   ),
                   SizedBox(
                     height: 8.0,
                   ),
-                  TextField(
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black),
-                      onChanged: (value) {
-                        person_phone = value;
-                      },
-                      decoration: kTextFieldDecoration.copyWith(
-                          hintText: 'Enter your phone_number')),
+                  TextFormField(
+                    cursorColor: Colors.black,
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(labelText: 'Phone #'),
+                    textInputAction: TextInputAction.next,
+                    focusNode: _phoneFocusNode,
+                    validator: (String value) {
+                      if(value.isEmpty) {
+                        return 'Please provide a phone number';
+                      }
+                      test = value;
+                      return null;
+                    },
+                    onChanged: (value) {
+                        per_phone = value;
+                    },
+                    // onSaved: (String value) {
+                    //   _editedPerson = Person(
+                    //     name: _editedPerson.name,
+                    //     phone: value,
+                    //     email: _editedPerson.email,
+                    //     description: _editedPerson.description,
+                    //     invest_amount: _editedPerson.invest_amount,
+                    //     recover_amount: _editedPerson.recover_amount,
+                    //   );
+                    // },
+                  ),
                   SizedBox(
                     height: 8.0,
                   ),
@@ -93,26 +169,8 @@ class _IdentificationState extends State<Identification> {
                   RoundedButton(
                     title: 'Register',
                     colour: Colors.blue.shade900,
-                    onPressed: () async {
-                      await _firestore.collection('person').add({
-                        'email' : email,
-                        'name' : person_name,
-                        'phone' : person_phone,
-                        'invest_amount' : 0,
-                        'recover_amount' : 0,
-                        'invest_date' : '@@@@/@@/@@  @@:@@',
-                        'description' : ''
-                      });
-                      try {
-                          Navigator.push(context, MaterialPageRoute(builder: (
-                              context) => MainPage()));
-                        setState(() {
-                        });
-                      }
-                      catch (e) {
-                        print(e);
-                      }
-                    },),
+                    onPressed: _saveForm,
+                  ),
                 ],
               ),
             ),
@@ -120,4 +178,6 @@ class _IdentificationState extends State<Identification> {
         ),
     );
   }
+
+
 }

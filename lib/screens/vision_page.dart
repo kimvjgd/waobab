@@ -30,7 +30,8 @@ class _VisionPageState extends State<VisionPage> {
               SizedBox(
                 height: 20,
               ),
-              Text('와오밥 나무는,'),
+              Text('와오밥나무는,',style: TextStyle(fontSize: 17),),
+              SizedBox(height: 30,),
               Align(
                 child: Image.asset(
                   'images/vision_1.png',
@@ -52,7 +53,7 @@ class _VisionPageState extends State<VisionPage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text('으로 심어질 것이며\n\n우리나라의 뉴스에 가뭄피해 관련 기사가 나오지 않는 날까지 심어질 것입니다.'),
+              Text('으로 심어질 것이며\n\n우리나라의 뉴스에 가뭄피해 관련 기사가 나오지 않는 날까지 심어질 것입니다.',style: TextStyle(fontSize: 17),),
             ],
           ),
         ),

@@ -66,52 +66,50 @@ class _IntroductionPageState extends State<IntroductionPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('매년 찾아오는 가뭄\n기후 변화로 인해 앞으로 더욱 심각해 질 것입니다.',
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
 
-                SizedBox(height: 50,),
+                SizedBox(height: 20,),
                 Text(
                   '2017 년',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 3,),
                 Container(
                     child: YoutubePlayer(
                   controller: _controller_2017,
                 )),
-                SizedBox(height: 50,),
+                SizedBox(height: 20,),
                 Text(
                   '2018 년',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 3,),
                 Container(
                     child: YoutubePlayer(
                   controller: _controller_2018,
                 )),
-                SizedBox(height: 50,),
+                SizedBox(height: 20,),
                 Text(
                   '2019 년',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 3,),
                 Container(
                     child: YoutubePlayer(
                   controller: _controller_2019,
                 )),
-                SizedBox(height: 50,),
+                SizedBox(height: 20,),
                 Text(
                   '2020 년',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 3,),
                 Container(
                     child: YoutubePlayer(
                   controller: _controller_2020,
                 )),
-                SizedBox(height: 100,),
+                SizedBox(height: 80,),
                 Text('당신이 심은 와오밥나무 한그루,\n가뭄을 해결할 수 있습니다.',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
+                  style: TextStyle(fontSize: 17),),
                 SizedBox(height: 40,),
                 Align(
                   child: Image.asset('images/introduction_1.png',
@@ -119,12 +117,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
                 ),
                 SizedBox(height: 80),
                 Text('* 와오밥열매 1개 = 1,000원',
-                style: TextStyle(fontSize: 20),),
-                Text('예) 10,000원 짜리 와오밥 나무에서는 10개의 와오밥열매가 있습니다.',
-                  style: TextStyle(fontSize: 15),),
+                style: TextStyle(fontSize: 17),),
+                Text('예) 10,000원 짜리 와오밥 나무에서는 10개의 와오밥열매가 열립니다..',
+                  style: TextStyle(fontSize: 12),),
                 SizedBox(height: 10,),
-                Text('와오밥 열매로 해당 지역에서 수확된 농산물 값싼 가격에 받아 볼 수 있습니다.',
-                  style: TextStyle(fontSize: 20),),
+                Text('와오밥열매로 해당 지역에서 수확된 농산물 값싼 가격에 받아 볼 수 있습니다.',
+                  style: TextStyle(fontSize: 17),),
               ],
             ),
           ),

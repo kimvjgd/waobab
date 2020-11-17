@@ -1,3 +1,4 @@
+/*
 import 'package:cor_waterstation/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -245,4 +246,4 @@ class UserInfo {
 
   UserInfo(this.name, this.invest_amount, this.recover_amount, this.invest_date, this.description,
       this.email);
-}
+}*/

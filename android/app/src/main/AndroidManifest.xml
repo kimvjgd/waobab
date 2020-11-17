@@ -8,8 +8,8 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="cor_waterstation"
-        android:icon="@mipmap/ic_launcher">
+        android:label="WAOBAB"
+        android:icon="@mipmap/launcher_icon">
 
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBmKEhxMDfEtO_OJ6_Vr7DHLsURMk6eyHc"/>
